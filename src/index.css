@@ -1,0 +1,288 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-primary: #0B0D10;
+    --color-bg-secondary: #171A20;
+    --color-accent-red: #E32636;
+    --color-accent-red-hover: #c41e2d;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #B8BEC7;
+    --color-silver: #C7CCD3;
+  }
+
+  body {
+    background-color: #0B0D10;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0D10;
+}
+::-webkit-scrollbar-thumb {
+  background: #232730;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E32636;
+}
+
+/* Headlight beam effect */
+.headlight-beam {
+  background: radial-gradient(ellipse at 50% 10%, rgba(255, 255, 255, 0.9) 0%, rgba(227, 38, 54, 0.4) 25%, rgba(11, 13, 16, 0) 70%);
+}
+
+/* Red neon ambient glow */
+.red-ambient-glow {
+  box-shadow: 0 0 50px -10px rgba(227, 38, 54, 0.35);
+}
+
+.red-ambient-glow-subtle {
+  box-shadow: 0 0 30px -10px rgba(227, 38, 54, 0.2);
+}
+
+/* Metallic text gradient */
+.text-metallic {
+  background: linear-gradient(135deg, #FFFFFF 0%, #C7CCD3 50%, #88909D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-silver-shimmer {
+  background: linear-gradient(90deg, #FFFFFF 0%, #E2E8F0 25%, #94A3B8 50%, #FFFFFF 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Scanline / Workshop Grid */
+.workshop-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Pulse animation for scanner */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* =========================================================================
+   SCROLL-TRIGGERED REVEAL AND HIDE ANIMATION SYSTEM
+   Transitions sections smoothly when entering the middle of the viewport,
+   and smoothly hides them when leaving. Fully re-triggers on scroll back up.
+   ========================================================================= */
+
+.scroll-reveal-container {
+  opacity: 0;
+  transform: translateY(36px) scale(0.985);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.scroll-reveal-container.is-revealed {
+  opacity: 1;
+  transform: translateY(0px) scale(1);
+  pointer-events: auto;
+}
+
+/* Staggered child elements */
+.scroll-reveal-container .stagger-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0ms;
+}
+
+.scroll-reveal-container.is-revealed .stagger-header {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.scroll-reveal-container .stagger-body {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 100ms;
+}
+
+.scroll-reveal-container.is-revealed .stagger-body {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.scroll-reveal-container .stagger-cards {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 200ms;
+}
+
+.scroll-reveal-container.is-revealed .stagger-cards {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.scroll-reveal-container .stagger-footer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 280ms;
+}
+
+.scroll-reveal-container.is-revealed .stagger-footer {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scroll-reveal-container,
+  .scroll-reveal-container .stagger-header,
+  .scroll-reveal-container .stagger-body,
+  .scroll-reveal-container .stagger-cards,
+  .scroll-reveal-container .stagger-footer {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* =========================================================================
+   TOUCH / NAV CLICK BACKGROUND ANIMATIONS (Home & About)
+   ========================================================================= */
+
+@keyframes bg-shockwave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.15);
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}
+
+.animate-bg-shockwave {
+  animation: bg-shockwave 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes laser-sweep-x {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-laser-sweep {
+  animation: laser-sweep-x 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes laser-sweep-y {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-laser-sweep-y {
+  animation: laser-sweep-y 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes red-energy-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  35% {
+    opacity: 0.75;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
+
+.animate-energy-pulse {
+  animation: red-energy-pulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes grid-glow-flash {
+  0% {
+    opacity: 0.1;
+  }
+  30% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.animate-grid-flash {
+  animation: grid-glow-flash 1.2s ease-out forwards;
+}
+
