@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Shield, Wrench, Car, Check, Sparkles } from 'lucide-react';
 import { COMPANY } from '../data/companyData';
 import { ScrollReveal } from './ScrollReveal';
+import { IMAGES } from '../assets/images';
 
 interface AboutSectionProps {
   externalTrigger?: number;
@@ -148,7 +149,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ externalTrigger }) =
                 
                 <div className="relative rounded-2xl overflow-hidden bg-[#171A20] border border-white/15 aspect-[4/5] sm:aspect-[3/4]">
                   <img
-                    src="/src/assets/images/workshop_servicing_bay_1793513341079.jpg"
+                    src={IMAGES.workshop}
                     alt="MMR MOTORS LTD dedicated vehicle servicing and repair workshop facility"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"

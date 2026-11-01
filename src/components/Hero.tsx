@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Phone, ShieldCheck, Sparkles, ChevronRight, Eye } from 'lucide-react';
 import { COMPANY } from '../data/companyData';
+import { IMAGES } from '../assets/images';
 
 interface HeroProps {
   onOpenEnquiry?: () => void;
@@ -114,7 +115,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnquiry, externalTrigger }) =>
       {/* Background Cinematic Image Layer with Smooth Zoom */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img
-          src="/src/assets/images/hero_automotive_dark_1793513340709.jpg"
+          src={IMAGES.hero}
           alt="MMR Motors precision automotive workshop with performance sports vehicle"
           referrerPolicy="no-referrer"
           className={`w-full h-full object-cover object-center transition-all duration-1000 ease-out transform ${

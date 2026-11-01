@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { WORKSHOP_CHECKPOINTS, COMPANY } from '../data/companyData';
 import { ScrollReveal } from './ScrollReveal';
+import { IMAGES } from '../assets/images';
 
 interface WorkshopSceneProps {
   onOpenEnquiry?: () => void;
@@ -108,7 +109,7 @@ export const WorkshopScene: React.FC<WorkshopSceneProps> = ({ onOpenEnquiry }) =
           <div className="relative aspect-[16/9] min-h-[380px] max-h-[600px] w-full overflow-hidden bg-black">
             {/* Workshop image with realistic technician & vehicle on hydraulic lift */}
             <img
-              src="/src/assets/images/workshop_servicing_bay_1793513341079.jpg"
+              src={IMAGES.workshop}
               alt="Automotive technician conducting diagnostic inspection in modern Croydon workshop bay"
               referrerPolicy="no-referrer"
               className={`w-full h-full object-cover transition-all duration-700 ${

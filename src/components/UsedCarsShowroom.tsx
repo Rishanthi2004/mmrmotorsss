@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Car, ShieldCheck, ArrowRight, Phone, Mail, Sparkles, Filter, CheckCircle2 } from 'lucide-react';
 import { COMPANY, SHOWROOM_CATEGORIES } from '../data/companyData';
 import { ScrollReveal } from './ScrollReveal';
+import { IMAGES } from '../assets/images';
 
 interface UsedCarsShowroomProps {
   onOpenEnquiry?: (category?: string) => void;
@@ -170,7 +171,7 @@ export const UsedCarsShowroom: React.FC<UsedCarsShowroomProps> = ({ onOpenEnquir
             >
               <div className="relative rounded-2xl overflow-hidden aspect-[16/10] bg-black border border-white/10 shadow-xl">
                 <img
-                  src="/src/assets/images/showroom_used_car_luxury_1793513342804.jpg"
+                  src={IMAGES.showroom}
                   alt="MMR MOTORS LTD luxury showroom presentation"
                   referrerPolicy="no-referrer"
                   className={`w-full h-full object-cover transition-transform duration-700 ease-out ${

@@ -41,6 +41,8 @@ export interface ServiceItem {
   actionLabel: string;
 }
 
+import { IMAGES } from '../assets/images';
+
 export const SERVICES: ServiceItem[] = [
   {
     id: 'maintenance',
@@ -48,7 +50,7 @@ export const SERVICES: ServiceItem[] = [
     title: 'VEHICLE MAINTENANCE',
     headline: 'Routine Vehicle Maintenance',
     description: 'Routine vehicle maintenance to help keep your vehicle in good working condition.',
-    image: '/src/assets/images/service_vehicle_maintenance_1793513341838.jpg',
+    image: IMAGES.maintenance,
     features: [
       'Comprehensive oil & multi-filter renewal',
       'Fluid level, viscosity & cooling check',
@@ -63,7 +65,7 @@ export const SERVICES: ServiceItem[] = [
     title: 'VEHICLE REPAIR SERVICES',
     headline: 'Automotive Repair Services',
     description: 'Automotive repair services to address vehicle issues and maintenance requirements.',
-    image: '/src/assets/images/service_vehicle_repair_1793513342728.jpg',
+    image: IMAGES.repair,
     features: [
       'Engine mechanical diagnostics & fault recovery',
       'Brake caliper, rotor & hydraulic repairs',
@@ -78,7 +80,7 @@ export const SERVICES: ServiceItem[] = [
     title: 'USED CAR SALES',
     headline: 'Quality Pre-Owned Vehicles',
     description: 'Explore used-car options and contact our team for enquiries about available vehicles.',
-    image: '/src/assets/images/showroom_used_car_luxury_1793513342804.jpg',
+    image: IMAGES.showroom,
     features: [
       'Hand-selected verified used vehicle stock',
       'Full mechanical pre-sale inspection completed',
